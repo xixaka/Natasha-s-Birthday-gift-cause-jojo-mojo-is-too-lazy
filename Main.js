@@ -1,10 +1,11 @@
+var song;
 function preload(){
-    let song;
-    song = loadSound("Happy.mp3");
+    song = loadSound("music.mp3");
 }
 
 function music_f(){
-    play(song);
+    //song.play();
+    console.log("Loadedddddddddddddddddd");
 }
 
 function setup(){
@@ -16,7 +17,7 @@ function setup(){
 
 function draw(){
     image(video, 0, 0, 440, 380);
-    
+     
     fill(255, 0, 0);
     stroke(0, 128, 0);
     rect(0, 0, 460, 20);
@@ -51,5 +52,21 @@ function draw(){
 }
 
 function ayeetedclick(){
+    song.play();
     save("Happy Birthday Natasha. Hope this is good enough for you. Your brother was lazy and forced me to make this for you. He also forgot your birthday. Go scold him or something. He deserves it.gif");
+    console.log("LOADED");
+    document.getElementById("stopbutton").innerHTML = `<button class="btn btn-info" onclick="stopnow()">Stop Music</button>`;
+}
+
+
+function stopnow(){
+    song.stop();
+    document.getElementById("stopbutton").innerHTML = ``;
+    document.getElementById("startbutton").innerHTML = `<button class="btn btn-primary" onclick="startnow()">Start Music</button>`;
+}
+
+function startnow(){
+    song.play();
+    document.getElementById("startbutton").innerHTML = ``;
+    document.getElementById("stopbutton").innerHTML = `<button class="btn btn-info" onclick="stopnow()">Stop Music</button>`;
 }
